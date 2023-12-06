@@ -13,6 +13,16 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <!-- Add these lines inside the <head> section -->
+    <link href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+
+
+    <!-- Add these lines inside the <head> section -->
+    <link href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('node_modules/select2/dist/js/select2.min.js') }}"></script>
+
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -55,6 +65,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                        {{ __('Profile') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -76,5 +89,13 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Add this script at the end of your layout file or in a dedicated script file -->
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+
 </body>
 </html>
